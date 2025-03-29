@@ -1,0 +1,36 @@
+{
+  "name": "library-management-system",
+  "version": "1.0.0",
+  "description": "Manage your library efficiently and effectively.",
+  "main": "src/index.tsx",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "tailwindcss": "latest",
+    "typescript": "latest",
+    "zod": "latest",
+    "zustand": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "jest": "latest",
+    "ts-jest": "latest"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}

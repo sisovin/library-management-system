@@ -1,0 +1,48 @@
+export const BOOK_GENRES = [
+  'Fiction',
+  'Non-Fiction',
+  'Science Fiction',
+  'Fantasy',
+  'Mystery',
+  'Thriller',
+  'Romance',
+  'Horror',
+  'Biography',
+  'History',
+  'Children',
+  'Young Adult',
+  'Self-Help',
+  'Health',
+  'Travel',
+  'Guide',
+  'Religion',
+  'Science',
+  'Math',
+  'Poetry',
+  'Comics',
+  'Art',
+  'Cookbooks',
+  'Diaries',
+  'Journals',
+  'Series',
+  'Trilogy',
+  'Anthology',
+  'Drama',
+  'Adventure',
+  'Classic',
+];
+
+export const BOOK_STATUSES = [
+  'Available',
+  'Checked Out',
+  'Reserved',
+  'Lost',
+  'Damaged',
+];
+
+export const BOOK_FORMATS = [
+  'Hardcover',
+  'Paperback',
+  'Ebook',
+  'Audiobook',
+];
