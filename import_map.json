@@ -1,0 +1,15 @@
+{
+  "imports": {
+    "std/": "https://deno.land/std@0.97.0/",
+    "oak/": "https://deno.land/x/oak@v7.5.0/",
+    "bcrypt/": "https://deno.land/x/bcrypt@v0.2.4/",
+    "dotenv/": "https://deno.land/x/dotenv@v2.0.0/",
+    "postgres/": "https://deno.land/x/postgres@v0.11.2/",
+    "redis/": "https://deno.land/x/redis@v0.22.0/",
+    "drizzle/": "https://deno.land/x/drizzle@v1.0.0/",
+    "zod/": "https://deno.land/x/zod@v3.11.6/",
+    "argon2/": "https://deno.land/x/argon2@v0.1.1/",
+    "jwt/": "https://deno.land/x/djwt@v2.2/",
+    "s3/": "https://deno.land/x/s3@v0.5.0/"
+  }
+}

@@ -1,0 +1,81 @@
+@startuml
+
+entity "users" {
+  * id : SERIAL [PK]
+  * username : VARCHAR(50) [NOT NULL, UNIQUE]
+  * email : VARCHAR(100) [NOT NULL, UNIQUE]
+  * password : VARCHAR(100) [NOT NULL]
+  * created_at : TIMESTAMP [DEFAULT CURRENT_TIMESTAMP]
+}
+
+entity "books" {
+  * id : SERIAL [PK]
+  * title : VARCHAR(100) [NOT NULL]
+  * author : VARCHAR(100) [NOT NULL]
+  * published_date : DATE
+  * isbn : VARCHAR(20) [UNIQUE]
+  * cover_image_url : VARCHAR(255)
+  * created_at : TIMESTAMP [DEFAULT CURRENT_TIMESTAMP]
+}
+
+entity "categories" {
+  * id : SERIAL [PK]
+  * name : VARCHAR(50) [NOT NULL, UNIQUE]
+  * created_at : TIMESTAMP [DEFAULT CURRENT_TIMESTAMP]
+}
+
+entity "borrows" {
+  * id : SERIAL [PK]
+  * user_id : INTEGER [FK -> users.id]
+  * book_id : INTEGER [FK -> books.id]
+  * borrow_date : TIMESTAMP [DEFAULT CURRENT_TIMESTAMP]
+  * return_date : TIMESTAMP
+}
+
+entity "reviews" {
+  * id : SERIAL [PK]
+  * user_id : INTEGER [FK -> users.id]
+  * book_id : INTEGER [FK -> books.id]
+  * rating : INTEGER [CHECK (rating >= 1 AND rating <= 5)]
+  * comment : TEXT
+  * created_at : TIMESTAMP [DEFAULT CURRENT_TIMESTAMP]
+}
+
+entity "reading_lists" {
+  * id : SERIAL [PK]
+  * user_id : INTEGER [FK -> users.id]
+  * name : VARCHAR(100) [NOT NULL]
+  * created_at : TIMESTAMP [DEFAULT CURRENT_TIMESTAMP]
+}
+
+entity "reading_list_books" {
+  * reading_list_id : INTEGER [FK -> reading_lists.id]
+  * book_id : INTEGER [FK -> books.id]
+  * PRIMARY KEY (reading_list_id, book_id)
+}
+
+entity "notifications" {
+  * id : SERIAL [PK]
+  * user_id : INTEGER [FK -> users.id]
+  * message : TEXT [NOT NULL]
+  * read : BOOLEAN [DEFAULT FALSE]
+  * created_at : TIMESTAMP [DEFAULT CURRENT_TIMESTAMP]
+}
+
+entity "analytics" {
+  * id : SERIAL [PK]
+  * event_name : VARCHAR(100) [NOT NULL]
+  * user_id : INTEGER [FK -> users.id]
+  * book_id : INTEGER [FK -> books.id]
+  * event_data : JSONB
+  * created_at : TIMESTAMP [DEFAULT CURRENT_TIMESTAMP]
+}
+
+entity "file_storage" {
+  * id : SERIAL [PK]
+  * user_id : INTEGER [FK -> users.id]
+  * file_url : VARCHAR(255) [NOT NULL]
+  * created_at : TIMESTAMP [DEFAULT CURRENT_TIMESTAMP]
+}
+
+@enduml
