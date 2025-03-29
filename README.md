@@ -1,2 +1,1 @@
-# library-management-system
-A repository for the Library Management System with enhanced features
+This repository is empty. Any task executed on it should be considered a new capability and needs to be created.
