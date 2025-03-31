@@ -1,0 +1,43 @@
+# Dependencies
+node_modules
+.deno/*
+*.lock
+*.lock.json
+
+# Environment variables
+.env
+../backend/.env
+../frontend/.env
+../frontend/.env.local
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Build output
+dist
+build
+out
+
+# IDE and editor folders
+.vscode/*
+.idea/*
+*.sublime-*
+.DS_Store
+
+# Database
+*.sqlite
+*.db
+
+# Temporary files
+tmp/*
+temp/*
+
+../backend/migrations/
+../backend/migrations/
+../backend/scripts/seed.ts
