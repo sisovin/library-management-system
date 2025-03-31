@@ -1,0 +1,27 @@
+{
+  "tasks": {
+   "start": "deno run --allow-net --allow-env --allow-read --allow-ffi src/app.ts",
+    "dev": "deno run --allow-net --allow-env --allow-read --allow-ffi --watch src/app.ts",
+    "install": "deno cache src/app.ts",
+    "migrate": "deno run --allow-net --allow-env --allow-read --allow-write scripts/migrate.ts",
+    "seed": "deno run --allow-net --allow-env --allow-read --allow-write scripts/seed.ts",
+    "test": "deno test --allow-net --allow-env --allow-read --allow-write"
+  },
+  "importMap": "import_map.json",
+  "fmt": {
+    "options": {
+      "useTabs": false,
+      "lineWidth": 80,
+      "indentWidth": 2,
+      "singleQuote": true,
+      "proseWrap": "preserve"
+    }
+  },
+  "lint": {
+    "rules": {
+      "tags": ["recommended"],
+      "include": ["src/", "tests/"]
+    }
+  },
+  "nodeModulesDir": "auto"
+}
