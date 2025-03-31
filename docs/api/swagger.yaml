@@ -5,6 +5,7 @@ info:
   version: 1.0.0
 servers:
   - url: http://localhost:8000/api/v1
+    description: Local server
 paths:
   /auth/login:
     post:

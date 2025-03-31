@@ -49,136 +49,55 @@ This project is a Library Management System built with Deno. It includes feature
 Below is the full project structure for the Deno Library Management System with enhanced features:
 ```
 library-management-system/
+├── backend/                 # Backend application
+│   ├── app.ts               # Application entry point
+│   ├── cache/               # Caching and session management
+│   ├── config/              # Configuration files
+│   ├── controllers/         # Route controllers
+│   ├── db/                  # Database models and queries
+│   ├── graphql/             # GraphQL resolvers and schemas
+│   ├── lib/                 # Shared libraries
+│   ├── middleware/          # Middleware functions
+│   ├── models/              # ORM models
+│   ├── modules/             # Modular services (for microservices architecture)
+│   │   ├── books/           # Example module: Books service
+│   │   ├── users/           # Example module: Users service
+│   │   └── loans/           # Example module: Loans service
+│   ├── routes/              # API route definitions
+│   ├── services/            # Business logic
+│   ├── utils/               # Utility functions
+│   ├── websockets/          # WebSocket handlers
+│   └── tests/               # Backend tests
+│       ├── e2e/             # End-to-end tests
+│       ├── integration/     # Integration tests
+│       ├── unit/            # Unit tests
+│       └── mocks/           # Mock data and utilities for testing
 ├── .env.example
+├── .env.local
 ├── deno.json
+├── docker-compose.yml
 ├── import_map.json
-├── docker-compose.yml          # For Postgres+Redis containers
-├── migrations/
-│   ├── 0001_initial_schema.ts
-│   ├── 0002_seed_data.ts
-│   └── 0003_add_advanced_features.ts
-├── src/
-│   ├── config/
-│   │   ├── app.ts             # App configuration
-│   │   ├── db.ts             # Postgres config
-│   │   ├── redis.ts          # Redis config
-│   │   ├── auth.ts           # Auth constants
-│   │   └── cache.ts          # Cache policies
-│   ├── controllers/
-│   │   ├── auth/
-│   │   │   ├── controller.ts # Main auth controller
-│   │   │   ├── login.ts
-│   │   │   ├── logout.ts
-│   │   │   ├── refresh.ts
-│   │   │   ├── register.ts
-│   │   │   └── password-reset.ts
-│   │   ├── books/
-│   │   │   ├── controller.ts
-│   │   │   ├── crud/
-│   │   │   │   ├── create.ts
-│   │   │   │   └── update.ts
-│   │   │   └── operations/
-│   │   │       ├── search.ts
-│   │   │       └── upload-cover.ts
-│   │   ├── categories/
-│   │   │   └── controller.ts
-│   │   ├── borrows/
-│   │   │   ├── controller.ts
-│   │   │   └── reservations.ts
-│   │   ├── reviews/
-│   │   │   └── controller.ts
-│   │   └── reading-lists/
-│   │       └── controller.ts
-│   ├── db/
-│   │   ├── schema/           # Drizzle schemas
-│   │   │   ├── users.ts
-│   │   │   ├── books.ts
-│   │   │   └── relations.ts  # All relations
-│   │   ├── client.ts         # DB client
-│   │   └── seed.ts           # Test data
-│   ├── lib/
-│   │   ├── auth/
-│   │   │   ├── argon2.ts
-│   │   │   ├── jwt.ts
-│   │   │   └── sessions.ts
-│   │   ├── cache/
-│   │   │   ├── redis.ts
-│   │   │   └── strategies/
-│   │   │       ├── books.ts
-│   │   │       └── search.ts
-│   │   └── search/           # Search engine
-│   │       └── fulltext.ts
-│   ├── middleware/
-│   │   ├── auth/
-│   │   │   ├── guard.ts      # Auth middleware
-│   │   │   └── roles.ts      # RBAC
-│   │   ├── validation/       # Zod validators
-│   │   │   ├── books.ts
-│   │   │   └── users.ts
-│   │   └── rate-limit.ts
-│   ├── models/
-│   │   ├── user/
-│   │   │   ├── model.ts
-│   │   │   └── repository.ts # DB operations
-│   │   ├── book/
-│   │   │   ├── model.ts
-│   │   │   └── repository.ts
-│   │   └── ...               # Other models
-│   ├── routes/
-│   │   ├── v1/               # Versioned API
-│   │   │   ├── auth.ts
-│   │   │   ├── books.ts
-│   │   │   └── index.ts      # Aggregated routes
-│   │   └── docs.ts           # OpenAPI spec
-│   ├── services/
-│   │   ├── notification/
-│   │   │   ├── email.ts
-│   │   │   └── webhook.ts
-│   │   ├── analytics/
-│   │   │   └── books.ts
-│   │   └── storage/          # File uploads
-│   │       └── s3.ts
-│   ├── types/
-│   │   ├── database/         # DB types
-│   │   ├── http/            # Request/response
-│   │   └── lib/             # Utility types
-│   ├── utils/
-│   │   ├── api/
-│   │   │   ├── response.ts  # Standard responses
-│   │   │   └── error.ts     # Error handling
-│   │   ├── pagination.ts
-│   │   └── logger.ts        # Structured logging
-│   └── app.ts               # App entrypoint
-├── tests/
-│   ├── integration/
-│   │   ├── auth/
-│   │   │   ├── login.test.ts
-│   │   │   └── register.test.ts
-│   │   ├── books/
-│   │   │   └── crud.test.ts
-│   │   └── setup.ts         # Test fixtures
-│   ├── unit/
-│   │   ├── lib/
-│   │   │   ├── auth/
-│   │   │   │   └── jwt.test.ts
-│   │   │   └── cache/
-│   │   │       └── redis.test.ts
-│   │   └── models/
-│   │       └── user.test.ts
-│   └── e2e/
-│       ├── borrow-flow.test.ts
-│       └── review-flow.test.ts
-├── docs/
-│   ├── api/                 # OpenAPI files
-│   │   ├── swagger.yaml
-│   │   └── postman.json
-│   └── db/                  # Database diagrams
-│       └── schema.puml
-└── scripts/
-    ├── deploy/
-    │   ├── production.ts
-    │   └── staging.ts
+├── .github/                 # CI/CD configurations (e.g., GitHub Actions)
+│   ├── workflows/           # Workflow files for CI/CD
+│   └── templates/           # Issue/PR templates
+├── docs/                    # Documentation
+│   ├── api/                 # API documentation (Swagger/Postman)
+│   ├── db/                  # Database diagrams
+│   ├── guides/              # Developer guides and tutorials
+│   └── architecture/        # Architecture diagrams and design docs
+├── environments/            # Environment-specific configurations
+│   ├── development/         # Development environment configs
+│   ├── staging/             # Staging environment configs
+│   └── production/          # Production environment configs
+├── integrations/            # Third-party integrations
+│   ├── payment/             # Payment gateway integrations
+│   └── external-apis/       # External API integrations
+├── migrations/              # Database migrations
+└── scripts/                 # Utility scripts
+    ├── backup/              # Database backup scripts
+    ├── deploy/              # Deployment scripts
     ├── migrate.ts           # Migration runner
+    ├── monitoring/          # Monitoring scripts
     └── seed.ts              # Data seeding
 ```
 ## Frontend Full Project Structure
@@ -289,6 +208,7 @@ library-frontend/
 ├── tsconfig.json
 ├── next.config.js
 └── package.json
+├── README.md
 ```
 
 ## Contribution Guidelines
